@@ -14,7 +14,7 @@ const render = require("./lib/htmlRenderer");
 
 const teamMembers = []
 
-function createTeam() {
+function generateTeamHtml() {
 
     return inquirer
         .prompt([
@@ -62,7 +62,7 @@ function createTeam() {
 
                 {
                     type: "input",
-                    message: "What is your first name?",
+                    message: "What is your full name?",
                     name: "managerName"
                 },
 
@@ -91,7 +91,7 @@ function createTeam() {
 
                 teamMembers.push(manager)
 
-                return createTeam();
+                return generateTeamHtml();
 
             })
 
@@ -105,7 +105,7 @@ function createTeam() {
 
                 {
                     type: "input",
-                    message: "What is your first name?",
+                    message: "What is your full name?",
                     name: "engineerName"
                 },
 
@@ -133,7 +133,7 @@ function createTeam() {
 
                 teamMembers.push(engineer)
 
-                return createTeam();
+                return generateTeamHtml();
 
             })
     }
@@ -148,7 +148,7 @@ function createTeam() {
 
                 {
                     type: "input",
-                    message: "What is your first name?",
+                    message: "What is your full name?",
                     name: "internName"
                 },
 
@@ -176,12 +176,12 @@ function createTeam() {
 
                 teamMembers.push(intern)
 
-                return createTeam();
+                return generateTeamHtml();
             })
     }
 }
 
-createTeam()
+generateTeamHtml()
 .then(() => {
   let html = render(teamMembers);
   fs.writeFile("team.html", html, 'utf8', () => {
