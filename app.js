@@ -1,28 +1,33 @@
-// Runs the application
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const inquirer = require("inquirer");
+const path = require("path");
+const fs = require("fs");
 
-var inquirer = require("inquirer");
-var Manager = require("./lib/Manager");
-var Engineer = require("./lib/Engineer");
-var Intern = require("./lib/Intern");
-var render = require("./TeamRenderer");
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+
+const render = require("./lib/htmlRenderer");
+
 
 
 const teamMembers = []
 
 function createTeam() {
 
-    inquirer
+    return inquirer
         .prompt([
 
             {
                 type: "list",
                 name: "memberChoice",
-                message: "What type of team member are you?",
+                message: "Which type of team member are you?",
                 choices: [
                     "Manager",
                     "Engineer",
                     "Intern",
-                    "No more employees"
+                    "No more members to add"
                 ]
             }
 
@@ -31,19 +36,19 @@ function createTeam() {
             switch (userChoice.memberChoice) {
                 // in case userChoice
                 case "Manager":
-                    addManager();
+                    return addManager();
                     break;
 
                 case "Engineer":
-                    addEngineer();
+                    return addEngineer();
                     break;
 
                 case "Intern":
-                    addIntern();
+                    return addIntern();
                     break;
 
                 case "No more employees":
-                    render(teamMembers);
+                    return;
                     break
 
             }
@@ -52,7 +57,7 @@ function createTeam() {
 
     function addManager() {
 
-        inquirer
+        return inquirer
             .prompt([
 
                 {
@@ -76,17 +81,17 @@ function createTeam() {
                 {
                     type: "input",
                     message: "What is your office number?",
-                    name: "managerOfficeNumber"
+                    name: "managerOfficeNum"
                 }
 
             ]).then(userChoice => {
                 console.log(userChoice);
 
-                const manager = new Manager(userChoice.managerName, userChoice.managerID, userChoice.managerEmail, userChoice.managerOfficeNumber)
+                const manager = new Manager(userChoice.managerName, userChoice.managerID, userChoice.managerEmail, userChoice.managerOfficeNum)
 
                 teamMembers.push(manager)
 
-                createTeam();
+                return createTeam();
 
             })
 
@@ -95,7 +100,7 @@ function createTeam() {
 
 
     function addEngineer() {
-        inquirer
+        return inquirer
             .prompt([
 
                 {
@@ -128,7 +133,7 @@ function createTeam() {
 
                 teamMembers.push(engineer)
 
-                createTeam();
+                return createTeam();
 
             })
     }
@@ -138,7 +143,7 @@ function createTeam() {
 
     function addIntern() {
 
-        inquirer
+      return inquirer
             .prompt([
 
                 {
@@ -171,17 +176,18 @@ function createTeam() {
 
                 teamMembers.push(intern)
 
-                createTeam();
+                return createTeam();
             })
     }
 }
 
+createTeam()
+.then(() => {
+  let html = render(teamMembers);
+  fs.writeFile("team.html", html, 'utf8', () => {
+    console.log("Finished")
+  });
+   
+})
 module.exports = teamMembers
-
-createTeam();
-
-
-
-
-
 
