@@ -184,7 +184,7 @@ function generateTeamHtml() {
 generateTeamHtml()
 .then(() => {
   let html = render(teamMembers);
-  fs.writeFile("team.html", html, 'utf8', () => {
+  fs.writeFile("./output/team.html", html, 'utf8', () => {
     console.log("Finished")
   });
    
