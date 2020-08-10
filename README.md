@@ -9,5 +9,5 @@ One of the most important aspects of programming is writing code that is readabl
 3. The user can input may choose any number of team members, and they may be a mix of engineers and interns.
 4. Once the user has filled out each prompt regarding their full name, position, employee ID, email, and or school then the application will have created a full team that will generate and create a HTML file that displays a nicely formatted team roster based on the information provided by the user. 
 
-![Employee prompts 1](./Assets/images/prompts.png)
-![Employee Summary 2](./Assets/images/teampage.png)
+![Employee prompts 1](./assets/images/prompts.png)
+![Employee Summary 2](./assets/images/teampage.png)
