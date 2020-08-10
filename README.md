@@ -1,14 +1,18 @@
 # 09-team-generator
 
 Template Engine + Employee Summary
-## 
+
 
 One of the most important aspects of programming is writing code that is readable, reliable, and maintainable. Here we are building a NODE CLI to take in information about employees and generate an HTML webpage that displays summaries for each person. Testing is a key piece in making code maintainable, this app has been ensured that all unit tests have pass.
+
+##
 
 ### User input
 
 The project must prompt the user to build an engineering team. An engineering
 team consists of a manager, and any number of engineers and interns.
+
+##
 
 
 ### Instructions
