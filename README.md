@@ -54,3 +54,7 @@ You now have yourself a new team roster ready to be displayed and shown off!
 
 ![Employee prompts 1](./assets/images/prompts.png)
 ![Employee Summary 2](./assets/images/teampage.png)
+
+
+### Video Demonstration 
+Please view video: https://drive.google.com/file/d/1o1k8fSNfw6poS89ADfzZ75pP35KeEONw/view?usp=sharing
